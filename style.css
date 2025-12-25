@@ -1,150 +1,153 @@
-/* Reset some defaults */
+/* RESET */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  /* Body styling */
-  body {
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  /* Main container */
-  .container {
-    background: #ffffff;
-    padding: 40px 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    text-align: center;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  /* Title */
-  h1 {
-    color: #ff6b81;
-    margin-bottom: 20px;
-    font-size: 2rem;
-    line-height: 1.2;
-  }
-  
-  /* Paragraphs */
-  p {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 1rem;
-  }
-  
-  /* Input box */
-  .input-box {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  input[type="text"] {
-    padding: 10px 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    flex: 1;
-  }
-  
-  button {
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    background-color: #ff6b81;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #ff4757;
-  }
-  
-  /* Generated link container */
-  #generatedLinkContainer,
-  #greetingContainer {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 10px;
-    background: #fff0f6;
-    border: 1px solid #ff6b81;
-  }
-  
-  /* Input inside link container */
-  #generatedLink {
-    width: 100%;
-    padding: 8px 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-  }
-  
-  /* Hide elements by default */
-  .hidden {
-    display: none;
-  }
-  
-  /* Greeting text */
-  #greetingText {
-    font-size: 1.5rem;
-    color: #ff4757;
-    margin-bottom: 10px;
-  }
-  
-  /* Responsive */
-  @media (max-width: 480px) {
-    .container {
-      padding: 30px 20px;
-    }
-  
-    h1 {
-      font-size: 1.6rem;
-    }
-  
-    button, input[type="text"] {
-      font-size: 0.9rem;
-    }
-  }
-
-  
-#shareButtons button {
-    padding: 8px 15px;
-    border-radius: 8px;
-    border: none;
-    margin: 5px 3px;
-    cursor: pointer;
-    color: #fff;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-  
-#whatsappShare { background-color: #25D366; }
-#whatsappShare:hover { background-color: #1DA851; }
 
-#facebookShare { background-color: #3b5998; }
-#facebookShare:hover { background-color: #2d4373; }
+/* BODY */
+body {
+  background: linear-gradient(to right, #ffecd2, #fcb69f);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
 
-#twitterShare { background-color: #1DA1F2; }
-#twitterShare:hover { background-color: #0d95e8; }
+/* CONTAINER */
+.container {
+  background: #fff;
+  width: 100%;
+  max-width: 500px;
+  padding: 32px 24px;
+  border-radius: 16px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  text-align: center;
+}
 
-#instagramShare { background-color: #E1306C; }
-#instagramShare:hover { background-color: #C13584; }
+/* TEXT */
+h1 {
+  color: #ff6b81;
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+}
 
-#snapchatShare { background-color: #FFFC00; color: #000; }
-#snapchatShare:hover { background-color: #f4f400; }
+p {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 14px;
+}
 
-#threadsShare { background-color: #000; }
-#threadsShare:hover { background-color: #333; }
+/* INPUT AREA */
+.input-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* BUTTONS */
+button {
+  padding: 12px 18px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background: #ff6b81;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff4757;
+}
+
+/* LINK & GREETING */
+#generatedLinkContainer,
+#greetingContainer {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #fff0f6;
+  border: 1px solid #ff6b81;
+}
+
+#generatedLink {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+#greetingText {
+  font-size: 1.5rem;
+  color: #ff4757;
+  margin-bottom: 10px;
+}
+
+/* SHARE BUTTONS */
+#shareButtons {
+  margin-top: 15px;
+}
+
+.share-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+#shareButtons button {
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  min-width: 120px;
+}
+
+/* SOCIAL COLORS */
+#whatsappShare { background: #25D366; }
+#facebookShare { background: #3b5998; }
+#twitterShare { background: #1DA1F2; }
+#instagramShare { background: #E1306C; }
+#snapchatShare { background: #FFFC00; color: #000; }
+#threadsShare { background: #000; }
+
+#whatsappShare:hover { background: #1DA851; }
+#facebookShare:hover { background: #2d4373; }
+#twitterShare:hover { background: #0d95e8; }
+#instagramShare:hover { background: #C13584; }
+#snapchatShare:hover { background: #f4f400; }
+#threadsShare:hover { background: #333; }
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 480px) {
+  .input-box {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  #shareButtons button {
+    width: 100%;
+  }
+}

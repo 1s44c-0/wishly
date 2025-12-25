@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wishly - Create Your Personalized Greeting</title>
-  <link rel="stylesheet" href="style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1426472853900178" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css" />
+
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1426472853900178"
+    crossorigin="anonymous"></script>
 </head>
+
 <body>
   <div class="container">
     <h1>🎉 Welcome to Wishly! 🎉</h1>
     <p>Enter your name to create your personalized festive greeting link:</p>
-    
+
     <div class="input-box">
-        <input type="text" id="nameInput" placeholder="Your Name">
-        <button id="generateBtn">Generate Link</button>
+      <input type="text" id="nameInput" placeholder="Your Name" />
+      <button id="generateBtn">Generate Link</button>
     </div>
 
-    <!-- Generated link container -->
     <div id="generatedLinkContainer" class="hidden">
-        <p>Your personalized link:</p>
-        <input type="text" id="generatedLink" readonly>
-        <button id="copyBtn">Copy Link</button>
+      <p>Your personalized link:</p>
+      <input type="text" id="generatedLink" readonly />
+      <button id="copyBtn">Copy Link</button>
 
-      
-        <!-- Social share buttons -->
-        <div id="shareButtons" style="margin-top: 10px;">
-            <p>Share your greeting:</p>
-            <button id="whatsappShare">WhatsApp</button>
-            <button id="facebookShare">Facebook</button>
-            <button id="twitterShare">Twitter</button>
-            <button id="instagramShare">Instagram</button>
-            <button id="snapchatShare">Snapchat</button>
-            <button id="threadsShare">Threads</button>
+      <div id="shareButtons">
+        <p>Share your greeting:</p>
+        <div class="share-grid">
+          <button id="whatsappShare">WhatsApp</button>
+          <button id="facebookShare">Facebook</button>
+          <button id="twitterShare">Twitter</button>
+          <button id="instagramShare">Instagram</button>
+          <button id="snapchatShare">Snapchat</button>
+          <button id="threadsShare">Threads</button>
         </div>
+      </div>
     </div>
 
-    <!-- Greeting container (for when someone visits with ?n=Name) -->
     <div id="greetingContainer" class="hidden">
-        <h2 id="greetingText"></h2>
-        <p>Share this link with your friends and make them smile! 😊</p>
+      <h2 id="greetingText"></h2>
+      <p>Share this link with your friends and make them smile 😊</p>
     </div>
   </div>
 
