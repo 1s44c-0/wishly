@@ -1,4 +1,6 @@
-// Get DOM elements
+// ================================
+// DOM ELEMENTS
+// ================================
 const nameInput = document.getElementById("nameInput");
 const generateBtn = document.getElementById("generateBtn");
 const generatedLinkContainer = document.getElementById("generatedLinkContainer");
@@ -6,7 +8,8 @@ const generatedLink = document.getElementById("generatedLink");
 const copyBtn = document.getElementById("copyBtn");
 const greetingContainer = document.getElementById("greetingContainer");
 const greetingText = document.getElementById("greetingText");
-// Get share buttons
+
+// Share buttons
 const whatsappBtn = document.getElementById("whatsappShare");
 const facebookBtn = document.getElementById("facebookShare");
 const twitterBtn = document.getElementById("twitterShare");
@@ -14,24 +17,29 @@ const instagramBtn = document.getElementById("instagramShare");
 const snapchatBtn = document.getElementById("snapchatShare");
 const threadsBtn = document.getElementById("threadsShare");
 
-// Function to read URL parameters
+
+// ================================
+// URL PARAM HANDLING
+// ================================
 function getNameFromURL() {
   const params = new URLSearchParams(window.location.search);
-  return params.get("n"); // ?n=Name
+  return params.get("n");
 }
 
-// Function to display greeting if URL has a name
 function displayGreeting() {
   const name = getNameFromURL();
   if (name) {
     greetingText.textContent = `🎉 Hey ${name}! You got a special greeting! 🎉`;
     greetingContainer.classList.remove("hidden");
-    // Optionally hide input box if someone visits with ?n=Name
     document.querySelector(".input-box").classList.add("hidden");
+    adjustContainerHeight();
   }
 }
 
-// Function to generate personalized link
+
+// ================================
+// LINK GENERATION
+// ================================
 function generateLink() {
   const name = nameInput.value.trim();
   if (!name) {
@@ -39,68 +47,95 @@ function generateLink() {
     return;
   }
 
-  // Build personalized URL
-  const currentURL = window.location.origin + window.location.pathname;
-  const personalizedURL = `${currentURL}?n=${encodeURIComponent(name)}`;
+  const baseURL = window.location.origin + window.location.pathname;
+  const personalizedURL = `${baseURL}?n=${encodeURIComponent(name)}`;
 
-  // Show the link in input box
   generatedLink.value = personalizedURL;
   generatedLinkContainer.classList.remove("hidden");
+
+  adjustContainerHeight();
 }
 
-// Function to copy link to clipboard
+
+// ================================
+// COPY LINK
+// ================================
 function copyLink() {
   generatedLink.select();
-  generatedLink.setSelectionRange(0, 99999); // For mobile
+  generatedLink.setSelectionRange(0, 99999);
   navigator.clipboard.writeText(generatedLink.value)
     .then(() => alert("Link copied to clipboard! 🎉"))
     .catch(() => alert("Failed to copy link."));
 }
 
-// Event listeners
+
+// ================================
+// RESPONSIVE HEIGHT HANDLER
+// ================================
+function adjustContainerHeight() {
+  const vh = window.innerHeight;
+
+  if (!greetingContainer.classList.contains("hidden")) {
+    greetingContainer.style.maxHeight = `${vh * 0.6}px`;
+    greetingContainer.style.overflowY = "auto";
+  }
+
+  if (!generatedLinkContainer.classList.contains("hidden")) {
+    generatedLinkContainer.style.maxHeight = `${vh * 0.65}px`;
+    generatedLinkContainer.style.overflowY = "auto";
+  }
+}
+
+
+// ================================
+// SHARE FUNCTIONS
+// ================================
+whatsappBtn.addEventListener("click", () => {
+  const text = `Check out my personalized greeting on Wishly! 🎉 ${generatedLink.value}`;
+  window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, "_blank");
+});
+
+facebookBtn.addEventListener("click", () => {
+  window.open(
+    `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(generatedLink.value)}`,
+    "_blank"
+  );
+});
+
+twitterBtn.addEventListener("click", () => {
+  const text = `Check out my personalized greeting on Wishly! 🎉`;
+  window.open(
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(generatedLink.value)}`,
+    "_blank"
+  );
+});
+
+instagramBtn.addEventListener("click", () => {
+  alert("Instagram doesn't allow direct link sharing. Copy your link and paste it in your story or bio.");
+});
+
+snapchatBtn.addEventListener("click", () => {
+  window.open(
+    `https://www.snapchat.com/scan?attachmentUrl=${encodeURIComponent(generatedLink.value)}`,
+    "_blank"
+  );
+});
+
+threadsBtn.addEventListener("click", () => {
+  const text = `Check out my personalized greeting on Wishly! 🎉`;
+  window.open(
+    `https://www.threads.net/share?text=${encodeURIComponent(text)}%20${encodeURIComponent(generatedLink.value)}`,
+    "_blank"
+  );
+});
+
+
+// ================================
+// EVENT LISTENERS
+// ================================
 generateBtn.addEventListener("click", generateLink);
 copyBtn.addEventListener("click", copyLink);
 
-// Display greeting on page load if URL has ?n=Name
 window.addEventListener("DOMContentLoaded", displayGreeting);
-
-
-// Function to share on WhatsApp
-whatsappBtn.addEventListener("click", () => {
-  const text = `Check out my personalized greeting on Wishly! 🎉 ${generatedLink.value}`;
-  const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
-  window.open(url, "_blank");
-});
-
-// Function to share on Facebook
-facebookBtn.addEventListener("click", () => {
-  const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(generatedLink.value)}`;
-  window.open(url, "_blank");
-});
-
-// Function to share on Twitter
-twitterBtn.addEventListener("click", () => {
-  const text = `Check out my personalized greeting on Wishly! 🎉`;
-  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(generatedLink.value)}`;
-  window.open(url, "_blank");
-});
-
-// Instagram (cannot auto-share links in posts, open profile or copy link)
-instagramBtn.addEventListener("click", () => {
-  alert("Instagram doesn't allow direct link sharing. Copy your link and paste it in a post/story!");
-});
-
-// Snapchat share via URL
-snapchatBtn.addEventListener("click", () => {
-  const url = `https://www.snapchat.com/scan?attachmentUrl=${encodeURIComponent(generatedLink.value)}`;
-  window.open(url, "_blank");
-});
-
-// Threads (use text + link, similar to Twitter)
-threadsBtn.addEventListener("click", () => {
-  const text = `Check out my personalized greeting on Wishly! 🎉`;
-  const url = `https://www.threads.net/share?text=${encodeURIComponent(text)}%20${encodeURIComponent(generatedLink.value)}`;
-  window.open(url, "_blank");
-});
-
-
+window.addEventListener("resize", adjustContainerHeight);
+window.addEventListener("load", adjustContainerHeight);

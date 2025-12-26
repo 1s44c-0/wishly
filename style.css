@@ -1,4 +1,6 @@
-/* RESET */
+/* ======================
+   RESET & BASE STYLES
+====================== */
 * {
   margin: 0;
   padding: 0;
@@ -6,17 +8,52 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* BODY */
 body {
   background: linear-gradient(to right, #ffecd2, #fcb69f);
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   padding: 16px;
+  line-height: 1.6;
+  color: #333;
 }
 
-/* CONTAINER */
+h1, h2, h3, h4 {
+  color: #ff6b81;
+  margin-bottom: 12px;
+}
+
+p, li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+/* ======================
+   HEADER NAVIGATION
+====================== */
+.top-nav {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+.top-nav nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #ff6b81;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.top-nav nav a:hover {
+  text-decoration: underline;
+}
+
+/* ======================
+   CONTAINER
+====================== */
 .container {
   background: #fff;
   width: 100%;
@@ -25,37 +62,25 @@ body {
   border-radius: 16px;
   box-shadow: 0 12px 25px rgba(0,0,0,0.15);
   text-align: center;
+  margin-bottom: 20px;
 }
 
-/* TEXT */
-h1 {
-  color: #ff6b81;
-  margin-bottom: 16px;
-  font-size: 1.8rem;
-}
-
-p {
-  color: #333;
-  font-size: 1rem;
-  margin-bottom: 14px;
-}
-
-/* INPUT AREA */
+/* INPUT & BUTTONS */
 .input-box {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 input[type="text"] {
-  flex: 1;
+  flex: 1 1 auto;
   padding: 12px 14px;
   font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
 }
 
-/* BUTTONS */
 button {
   padding: 12px 18px;
   font-size: 1rem;
@@ -65,13 +90,16 @@ button {
   color: #fff;
   cursor: pointer;
   transition: 0.3s;
+  flex-shrink: 0;
 }
 
 button:hover {
   background: #ff4757;
 }
 
-/* LINK & GREETING */
+/* ======================
+   GENERATED LINK & GREETING
+====================== */
 #generatedLinkContainer,
 #greetingContainer {
   margin-top: 20px;
@@ -99,7 +127,9 @@ button:hover {
   margin-bottom: 10px;
 }
 
-/* SHARE BUTTONS */
+/* ======================
+   SHARE BUTTONS
+====================== */
 #shareButtons {
   margin-top: 15px;
 }
@@ -116,6 +146,8 @@ button:hover {
   font-size: 0.9rem;
   border-radius: 8px;
   min-width: 120px;
+  flex: 1 1 auto;
+  text-align: center;
 }
 
 /* SOCIAL COLORS */
@@ -133,14 +165,76 @@ button:hover {
 #snapchatShare:hover { background: #f4f400; }
 #threadsShare:hover { background: #333; }
 
-/* MOBILE OPTIMIZATION */
-@media (max-width: 480px) {
-  .input-box {
-    flex-direction: column;
+/* ======================
+   CONTENT SECTIONS
+====================== */
+.content-section {
+  background: #fff;
+  padding: 20px 24px;
+  margin: 10px 0;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.content-section h2 {
+  margin-top: 16px;
+}
+
+.content-section ol, .content-section ul {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.content-section li {
+  margin-bottom: 8px;
+}
+
+/* ======================
+   FOOTER
+====================== */
+.footer {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.footer a {
+  color: #ff6b81;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 5px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* ======================
+   MEDIA QUERIES
+====================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 24px 16px;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+  }
+
+  #greetingText {
+    font-size: 1.3rem;
+  }
+
+  button {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .input-box {
+    flex-direction: column;
   }
 
   button {
@@ -148,6 +242,38 @@ button:hover {
   }
 
   #shareButtons button {
-    width: 100%;
+    min-width: 100%;
+  }
+
+  .content-section {
+    padding: 16px 12px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  #greetingText {
+    font-size: 1.2rem;
+  }
+
+  p, li {
+    font-size: 0.95rem;
+  }
+}
+
+/* =========================
+   SMALL SCREEN SHARE BUTTONS
+========================= */
+@media (max-width: 360px) {
+  #shareButtons .share-grid {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #shareButtons button {
+    min-width: 100%;
+    padding: 12px 0;
+    font-size: 0.95rem;
   }
 }
